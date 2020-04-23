@@ -1,6 +1,6 @@
 # MySQL服务组件文档
 
-> 本文档旨在帮助用户更好的了解PaaS平台MySQL服务组件。希望用户通过阅读该文档，能快速使用该组件的服务，降低学习成本，能更加专注于业务发展。
+> 本文档旨在为用户提供PaaS平台MySQL服务组件的全程指导。希望用户通过阅读该文档，能快速使用该组件的服务，降低学习成本，帮助用户轻松启用MySQL服务组件。
 
 ## MySQL组件介绍
 
@@ -51,9 +51,77 @@ MySQL组件的存储引擎决定了数据在计算机中的存储方式。MySQL�
 
 ### 初始化MySQL组件
 
+暂不明确流程
+
 ### 数据库访问
 
+> **前提条件**
+>
+> 访问MySQL服务组件前，应确认安装好相应客户端MySQL数据库连接的驱动，同时保证客户端到MySQL组件之间网络可通。暂未提供外网访问服务。
+
+访问MySQL服务组件的方式如下：
+
+| 方式|  说明|
+|---------|---------|
+| 命令行访问 |使用命令行通过终端对MySQL组件服务进行访问。<li>终端环境需对MySQL服务组件的网络可通。<li>终端已安装MySQL client，可执行MySQL访问的命令。| 
+|第三方工具访问|对于日常的数据库管理和使用，可通过第三方工具对MySQL组件进行访问。<li>第三方工具所在环境需对MySQL服务组件的网络可通。 |
+
+**命令行访问**
+
+1. 登录进入终端系统，执行下面的命令安装MySQL客户端：
+
+```
+yum install mysql
+```
+
+提示Complete!后， MySQL 客户端安装完成。
+
+![install](pic\install.png)
+
+2. 安装完成后，执行如下命令登录到MySQL实例：
+
+```
+mysql -h hostname -u username -p password
+```
+
+- hostname：替换为目标MySQL组件实例的地址
+- username：替换为使用的MySQL组件实例用户名，默认的用户名为root。
+
+显示Enter password：后输入与用户名对应的password，如下图实例，若出现MySQL [(none)]>说明成功登入MySQL实例：
+![install](pic\login.png)
+
+3. 在`MySQL [(none)]>`提示符下可以发送SQL语句到要执行的MySQL服务实例，需了解更多命令行信息，请参考 [mysql Client Commands](https://dev.mysql.com/doc/refman/5.7/en/mysql-commands.html)。
+
+下图中，演示了show databases;语句的执行效果：
+
+![install](pic\image.png)
+
+**第三方工具访问** 
+
+使用第三方工具访问MySQL组件服务，可通过图形化界面进行交互，避免了命令行是的交互，更直观。常见的第三方工具包括Navicat，phpmyadmin，SQLyog，MySQL Workbench等。下面的示例中，讲演示Navicat对MySQL实例的连接访问。
+
+1. 打开Navicat软件，在界面中找到"链接"按钮，点击后选择"MySQL":
+
+![navi-1](pic\Navicat-1.png)
+
+2. 在弹出的新界面中，输入连接名，这个连接名是为了方便记录是哪台服务器，可自行命名。输入主机，主机是mysql的服务器地址。输入端口：MySQL服务器端口。输入用户名和密码。
+
+![navi-1](pic\navi-2.png)
+
+3. 第二步的时候，如果担心自己输入的各项信息有误，可以使用左下角的“测试连接”，这个地方主要是测试数据库连接是否成功，如果不成功会提示相应的信息，然后，根据提示信息修改相应的信息。
+
+![navi-1](pic\navi-3.png)
+
+4. 在显示连接成功后，点击“保存”按钮。这时，操作界面会消失，同时，可以在主界面的左侧列表中多了一个“test”的菜单，这个菜单就是刚才添加的MySQL实例的链接。
+
+![navi-1](pic\navi-5.png)
+
+5. 双击左侧的“test”，就可以链接到MySQL组件服务了。连接后，可以针对不同的数据库进行各种操作。
+
+![navi-1](pic\navi-4.png)
+
 ### 数据库管理
+
 
 ## MySQL组件操作指南
 
